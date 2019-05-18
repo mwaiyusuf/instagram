@@ -20,5 +20,11 @@ def home(request):
     form = CommetnForm()
 
   return render(request,"home.html",{"images":images,"comments":comments,"form":form,"profile":profile})
+def profile(request.profile_id):
+
+  profile = profile.objects.get(pk = profile_id)
+  images = image.objects.filter(profile_id=profile).all()
+
+  return render(request,"profile.html",{"profile":profile,"images":images})
    
      
