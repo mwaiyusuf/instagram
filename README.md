@@ -2,7 +2,7 @@
 
 
 
-## Built By mwaiyusuf  10th May 2019
+## Built By mwaiyusuf  17th May 2019
 
 ## Description
 This is a web  application where a  user is able to view images. Image details are stored in categories and tagged by Location. The admin is responsible for uploading, editing or deleting images.
@@ -47,7 +47,7 @@ Admin  :
 ### Cloning
 * In your terminal:
 
-        $ git clone https://github.com/mwaiyusuf/gallery
+        $ git clone https://github.com/mwaiyusuf/Instagram
         $ cd gallery
 
 ## Running the Application
