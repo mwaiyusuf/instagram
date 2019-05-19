@@ -1,23 +1,28 @@
 from django.db import models
-from django.contrib.auth.models import user 
+ 
 # Create your models here.
-class Profile(models.Model):
-  usesr = models.OneToOneField(User , on_delete=models.CASCADE,null=True)
-  profile_photo=models.ImageField(upload_to='profiles/',null=True)
-  bio=models,charField(max_length=240,null=True)
+class Categories(models.Model):
+   name=models.CharField(max_length=30)
+#returning a unicode of any object 
+#object to string 
+   def __str__(self):
+     return self.name 
 
+class Location(models.Model):
+    name=models.CharField(max_length=30)
 
-  def save_profile(self):
-    self.save()
+    def __str__(self):
+      return self.name 
 
+class Image(models.Model):
+  name=models.CharField(max_length=50)
+  description=models.TextField()
+  instagram_image=models.ImageField(upload_to='base-images/',blank=True)
+  categories=models.ManyToManyField(categories)
+  location=models.ForeignKey(location)
 
   @classmethod
-  def get_profile(cls):
-    profile = profile.objects.all()
-    return profile 
+  def all_images(self):
+    return Image.objects.all()
+    
 
-
-  @classmethod
-  def find_profile(cls,search_term):
-    profile = profile.objects.filter(user__username__icontains=search_term)
-    return profile 
