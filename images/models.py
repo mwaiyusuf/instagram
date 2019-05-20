@@ -15,7 +15,7 @@ class Profile(models.Model):
   date = models.DateTimeField(auto_now_add=True, null= True) 
 
   def __str__(self):
-        return self.profile.user
+    return self.user
 
 class Image(models.Model):
   image = models.ImageField(upload_to ='pictsagram/')
@@ -29,4 +29,12 @@ class Image(models.Model):
         return self.image_caption
 
 
+class Comments (models.Model):
+  comment_post = models.CharField(max_length=150)
+  author = models.ForeignKey('Profile',related_name='commenter' , on_delete=models.CASCADE)
+  commented_image = models.ForeignKey('Image', on_delete=models.CASCADE)
+  date = models.DateTimeField(auto_now_add=True)
 
+  '''Method to filter database results'''
+  def __str__(self):
+      return self.author

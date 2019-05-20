@@ -13,5 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include    #include function allows to reference another URLconf
  
+from django.contrib import admin
+from django.urls import include, path
+from images import views
+from django.conf.urls.static import static
+
+  #include function allows to reference another URLconf
+ 
+urlpatterns = [
+
+    path('admin/', admin.site.urls),
+    path('', include('images.urls')),
+
+    #url for registration
+    path('accounts/', include('registration.backends.simple.urls')),
+
+]
