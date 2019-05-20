@@ -2,15 +2,15 @@
 {% load bootstrap3 %} 
 {% block content %}
 <div class="container">
-    <div class="logincont">
+    <div class="contlog">
         <!-- Image at Login-Form -->
         
-        <div class="loginimage">
+        <div class="imalog">
             <img src="" alt="  ">
         </div>
         
         <!-- error display during login -->
-        <div class="loginform">
+        <div class="formlog">
             {% if form.errors %}
             <p > Password or Username is incorrect </p>
             {% endif %}
@@ -58,23 +58,7 @@
                 
 
             </div>
-            <!-- Play Store and Apple store Images With well text to put them sidebyside! -->
-            <div class="login-playstorebtn">
-            
-            
-                <div class="googlebtn">
-            
-                    <a href="https://play.google.com/store/search?q=instagram"><img src="" alt=" " style="width:150px; height:40px "></a>
-            
-                </div>
-            
-                <div class="applebtn">
-            
-                    <a href="https://www.apple.com/us/search/instagram?src=itunes_serp"><img src=""  alt=" " style="width:148px; height:38px "></a>
-            
-                </div>
-            
-            </div>
+             
             
         </div>
 
