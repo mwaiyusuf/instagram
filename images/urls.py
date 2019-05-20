@@ -7,8 +7,8 @@ from django.shortcuts import render, redirect
 
  
 urlpatterns=[
-  url('^$',views.index, name='index'),
-  url('^explore',views.explore,name ='explore'),
+  url('',views.index, name='index'),
+  url('^all/$',views.explore,name ='explore'),
   url('^notification',views.notification,name ='notification'),
   url('^profile',views.profile,name ='profile'),
   url('^login',views.login,name ='login'),
