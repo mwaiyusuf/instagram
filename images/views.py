@@ -11,17 +11,17 @@ from . import models
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+
 def index(request):
     all_images = Image.objects.all()
     all_users = Profile.objects.all()
     next = request.GET.get('next')
     if next: return redirect(next)
-    return render(request, 'display/home.html',  {"all_images": all_images}, {"all_users":all_users})
+    return render(request, 'display/home.html',  {"all_users":all_users})
 
 @login_required(login_url='/accounts/login/')
 def explore(request):
-    return render(request, 'display/explore.html')
+    return render(request, 'display/all.html')
 
 @login_required(login_url='/accounts/login/')
 def notification(request):
@@ -29,7 +29,7 @@ def notification(request):
      
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    return render(request, 'display/userprofile.html')
+    return render(request, 'display/user.html')
 
 def logout(request):
     return render(request, 'registration/logout.html')
