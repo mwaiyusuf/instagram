@@ -15,18 +15,18 @@ Including another URLconf
 """
  
 from django.contrib import admin
-from django.urls import include, path
+from django.conf.urls import include,url 
 from images import views
 from django.conf.urls.static import static
-
+from django.conf import settings
   #include function allows to reference another URLconf
  
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
-    path('', include('images.urls')),
+    url('^admin/', admin.site.urls),
+    url('^$', include('images.urls')),
 
     #url for registration
-    path('accounts/', include('registration.backends.simple.urls')),
+    url('^accounts/', include('^registration.backends.simple.urls')),
 
 ]
