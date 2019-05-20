@@ -24,7 +24,7 @@ from django.conf import settings
 urlpatterns = [
 
     url('^admin/', admin.site.urls),
-    url('^', include('images.urls')),
+    url('', include('images.urls')),
 
     #url for registration
     url(r'^accounts/', include('registration.backends.simple.urls')),
