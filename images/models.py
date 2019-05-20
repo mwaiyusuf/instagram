@@ -1,28 +1,32 @@
 from django.db import models
- 
+from django.contrib.auth.models import User
+import datetime
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 # Create your models here.
-class Categories(models.Model):
-   name=models.CharField(max_length=30)
-#returning a unicode of any object 
-#object to string 
-   def __str__(self):
-     return self.name 
+ 
+class Profile(models.Model):
+  user = models.OneToOneField(User,on_delete=models.CASCADE,)
+  first_name = models.CharField(max_length=30)
+  last_name = models.CharField(max_length=30)
+  bio = models.CharField(max_length=350) 
+  profile_pic = models.ImageField(upload_to='ProfilePicture/')
+  profile_avatar = models.ImageField(upload_to='AvatorPicture/')
+  date = models.DateTimeField(auto_now_add=True, null= True) 
 
-class Location(models.Model):
-    name=models.CharField(max_length=30)
-
-    def __str__(self):
-      return self.name 
+  def __str__(self):
+        return self.profile.user
 
 class Image(models.Model):
-  name=models.CharField(max_length=50)
-  description=models.TextField()
-  instagram_image=models.ImageField(upload_to='base-images/',blank=True)
-  categories=models.ManyToManyField(categories)
-  location=models.ForeignKey(location)
+  image = models.ImageField(upload_to ='pictsagram/')
+  image_caption = models.CharField(max_length=700)
+  tag_someone = models.CharField(max_length=50,blank=True)
+  imageuploader_profile = models.ForeignKey(User, on_delete=models.CASCADE,null='True', blank=True)
+  image_likes = models.ManyToManyField('Profile', default=False, blank=True, related_name='likes')
+  date = models.DateTimeField(auto_now_add=True, null= True)
 
-  @classmethod
-  def all_images(self):
-    return Image.objects.all()
-    
+  def __str__(self):
+        return self.image_caption
+
+
 
