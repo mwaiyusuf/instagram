@@ -17,13 +17,13 @@ This is a web  application where a  user is able to view images. Image details a
   * Like a picture and leave a comment on it.
 
 
-## Admin Abilities
+<!-- ## Admin Abilities -->
  
-Admin  :
+<!-- Admin  :
 * Sign in to the gallery
 * Create new images for showcasing
 * Update image post details.
-* Delete images
+* Delete images -->
 
 
 ## Specifications
