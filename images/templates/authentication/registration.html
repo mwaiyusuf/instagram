@@ -24,7 +24,7 @@
 
         <div class="panel-body">
 
-            <form action="/accounts/register/" method="post">
+            <form action="/authentication/register/" method="post">
                 {% csrf_token %} {% bootstrap_form form %}
 
                 <!-- Sign Up Button -->
@@ -40,7 +40,7 @@
                 <!-- SignIN Button Next to (Do you have an account)! -->
                 <div class="panel-heading">
                     <p class="_g9ean pull-left">Have an account?</p>
-                    <a href="/accounts/login/" class="btn btn-primary btn-sm pull-right">Sign In</a>
+                    <a href="/authentication/login/" class="btn btn-primary btn-sm pull-right">Sign In</a>
                 </div>
                 <!--Collapse SignIN Button! -->
                 
