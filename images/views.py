@@ -11,7 +11,7 @@ from . import models
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+@login_required(login_url='/accounts/login/')
 def index(request):
     all_images = Image.objects.all()
     all_users = Profile.objects.all()
@@ -30,12 +30,15 @@ def notification(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     return render(request, 'display/user.html')
+    
+# @login_required(login_url='/accounts/login/')
+# def login(request):
+#     return render(request, 'registration/login.html')
 
-def logout(request):
-    return render(request, 'registration/logout.html')
+# def logout(request):
+#     return render(request, 'registration/logout.html')
 
-def login(request):
-    return render(request, 'registration/login.html')
+
 
 @login_required(login_url='/accounts/login/')
 def upload(request):
@@ -46,10 +49,12 @@ def upload(request):
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.imageuploader_profile= p
+            post.imageuploader_profile
+            # deleted = d
             post.save()
             return redirect('/')
     else:
         form =PostForm
-    return render(request, 'display/upload.html', {"form": form})
-
+    return render('upload.html', {"form": form})
+# deleted display/
+# deleted request
