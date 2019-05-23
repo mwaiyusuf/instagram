@@ -1,4 +1,5 @@
-"""insta URL Configuration
+"""
+insta URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -19,14 +20,14 @@ from django.conf.urls import include,url
 from images import views
 from django.conf.urls.static import static
 from django.conf import settings
-  #include function allows to reference another URLconf
+   
  
 urlpatterns = [
 
-    url('^admin/', admin.site.urls),
-    url('', include('images.urls')),
-
-    #url for registration
-    url(r'^accounts/', include('registration.backends.simple.urls')),
-
+    url(r'^admin/', admin.site.urls),
+    
+    
+    url(r'', include('images.urls')),
+    url(r'^logout/$', views.logout, {"next_page":'/'}),
+    url(r'^accounts/', include('registration.backends.simple.urls'))
 ]
