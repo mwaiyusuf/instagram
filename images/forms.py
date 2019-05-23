@@ -10,4 +10,9 @@ class PostForm(forms.ModelForm):
 class SignUpForm(forms.ModelForm):
   class Meta:
     model = Profile
-    exclude = ['bio','profile_pic','profile_avatar','date']
+    exclude = ['bio','profile_pic','profile_avatar', 'date']
+
+class LoginForm(forms.ModelForm):
+  class Meta:
+    model = Profile
+    exclude = ['bio','profile-pic','profile_avatar','date'] 
