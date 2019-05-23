@@ -1,0 +1,58 @@
+{%extends "registration/base.html"%} 
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <div class="contlog">
+       
+        
+        <div class="imalog">
+            <img src="" alt="  ">
+        </div>
+        
+         
+        <div class="formlog">
+            {% if form.errors %}
+            <p > Password or Username is incorrect </p>
+            {% endif %}
+             
+
+             
+            <div  class="panel panel-default">
+
+                 
+                    <img src=" " alt="  " style="width:247px; height:78px;margin: 5px auto; display: block;">
+                 <div class="panel-body">
+                     
+                    
+                    
+
+                    <h1><strong>You Are Signed</strong></h1>
+                     
+                    <div style="margin-top: 9%" class="panel-heading">
+                        <p  >Want to have an account?</p>
+                        <a href="/accounts/register/" class="btn btn-primary btn-sm pull-right">Sign Up</a>
+                    </div>
+                     
+                    <div style="margin-top: 21%;" class="panel-heading">
+                        <p  >Have an account?</p>
+                        <a href="/accounts/login/" class="btn btn-primary btn-sm pull-right">Sign In</a>
+                    </div>
+                    
+
+
+                 </div>
+
+            </div>
+            
+            
+        </div>
+
+
+    </div>
+
+           
+</div>
+
+{% endblock %}
+
+
