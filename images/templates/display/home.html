@@ -15,9 +15,9 @@
 
 
 
-        <!-- SECTION 1 -->
+ 
 
-        <!-- USED TO STYLE PICTURE-BODYSIZE    -->
+        <!-- USED TO STYLE PICTUREs    -->
         <div class="w3-card-6" style="width:56%">
 
             <div class="container">
@@ -29,24 +29,22 @@
                     
                     <div class="panel panel-primary">
 
-                        <!--   PROFILE & user name -->
-
                         <!-- Profile Picture and User name   -->
                         
                         <p class="userdp">
                             <img src="{% static ' ' %}" class="circdp" alt="  ">
                          {% if all_users %} {% for user in all_users %}
                             <strong> "{{user.user}}" </strong>
-                        {% endfor %}{% else %}
+                        {% endfor %}
+                        {% else %}
                         <strong>grammer</strong>
 
                         {% endif %}
                         </p>
-                       
-                        <!-- SECTION 2   -->
                         
-                        <a href="{{ .image }}" data-lightbox="gallery">
-                            <img src="{{ .image.url }}" class="img-responsive" style="width:100%;margin-top:12px; ">
+                        
+                        <a href="{{ Image.image }}" data-lightbox="gallery">
+                            <img src="{{ Image.image.url }}" class="img-responsive" style="width:100%;margin-top:12px; ">
                         </a> 
                         <div class="container">
                             <div class='likesection'>
@@ -61,17 +59,19 @@
                                     </p>
                                 </span>
                                 <p><strong>3 likes</strong> </p>
-                        <!-- Caption Section -->
-                        {% if all_users %} {% for user in all_users %}
+                         
+                        {% if all_users %} 
+                        {% for user in all_users %}
                         <strong> "{{user.user}}" </strong>
-                        {% endfor %}{% else %}
-                        <p><strong>grammer</strong> {{ .image_caption}}</p>
+                        {% endfor %}
+                        {% else %}
+                        <p><strong>grammer</strong> {{ Image.image_caption}}</p>
                         
                         {% endif %} 
 
                         <div class='comsection'>
                             <input type='text' id='cmnt' placeholder='Add a comment...'>
-                            <span class='dot02'></span>
+                            <span  ></span>
                         </div>
                             </div>
                         </div>
@@ -80,7 +80,8 @@
 
 
                 </div>
-                {% endfor %} {% else%}
+                {% endfor %} 
+                {% else%}
                 <h3>You have no images</h3>
 
                 {% endif %}
