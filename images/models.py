@@ -15,7 +15,7 @@ class Profile(models.Model):
   date = models.DateTimeField(auto_now_add=True, null= True) 
 
   def __str__(self):
-    return self.user
+    return self.first_name 
 
 class Image(models.Model):
   image = models.ImageField(upload_to ='pictsagram/')
@@ -35,6 +35,6 @@ class Comments (models.Model):
   commented_image = models.ForeignKey('Image', on_delete=models.CASCADE)
   date = models.DateTimeField(auto_now_add=True)
 
-  '''Method to filter database results'''
+   
   def __str__(self):
       return self.author
