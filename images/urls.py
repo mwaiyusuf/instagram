@@ -7,12 +7,12 @@ from django.shortcuts import render, redirect
 
  
 urlpatterns=[
-  url('',views.index, name='index'),
+  url('$',views.index, name='index'),
   url('^all/$',views.explore,name ='explore'),
   url('^notification',views.notification,name ='notification'),
   url('^profile',views.profile,name ='profile'),
-  url('^login',views.login,name ='login'),
   url('^logout',views.index,{'next_page': 'accounts:login'}, name='logout'),
+  # url('^login',views.login,name='login'),
   url('^upload',views.upload,name ='upload'),
 ]
 if settings.DEBUG:
