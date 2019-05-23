@@ -46,15 +46,29 @@ def upload(request):
     p = Profile.objects.filter(id=current_user.id).first()
     imageuploader_profile = Image.objects.filter(imageuploader_profile=p).all()
     if request.method == 'POST':
-        form = PostForm(request.POST,request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
+        form_post = PostForm(request.POST,request.FILES)
+        if form_post.is_valid():
+            post = form_post.save(commit=False)
             post.imageuploader_profile
             # deleted = d
             post.save()
-            return redirect('/')
+            return redirect('upload')
     else:
-        form =PostForm
-    return render('upload.html', {"form": form})
+        form_post =PostForm
+    return render(request,'upload.html', {"form_post": form_post})
 # deleted display/
 # deleted request
+
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form_post = PostForm(request.POST,request.FILES)
+        if form_post.is_valid():
+            post = form_post.save(commit=False)
+            post_user=current_user
+            form_post.save()
+            return redirect('new_post')
+    else:
+        form_post =PostForm(instance=request.user)
+    return render(request, 'display/new_post.html', {"form_post": form_post})
