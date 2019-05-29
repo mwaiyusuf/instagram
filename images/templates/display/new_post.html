@@ -1,4 +1,7 @@
-<form method="POST" action="{% url 'new_post'%}" enctype="multipart/form-data">  {% csrf_token%}
-  {{form_post}}
+{% load bootstrap3 %}
+<form method="POST" action="{% url 'new_post'%}" enctype="multipart/form-data">  
+  {% csrf_token%}
+  {% bootstrap_form form %}
+ 
   <button type="submit">Post</button>
 </form>

@@ -13,6 +13,8 @@ class Profile(models.Model):
   profile_pic = models.ImageField(upload_to='ProfilePicture/')
   profile_avatar = models.ImageField(upload_to='AvatorPicture/')
   date = models.DateTimeField(auto_now_add=True, null= True) 
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  # images=models.ForeignKey('Image', on_delete=models.CASCADE,null='True',blank=True)
 
   def __str__(self):
     return self.first_name 
@@ -21,9 +23,12 @@ class Image(models.Model):
   image = models.ImageField(upload_to ='pictsagram/')
   image_caption = models.CharField(max_length=700)
   tag_someone = models.CharField(max_length=50,blank=True)
-  imageuploader_profile = models.ForeignKey(User, on_delete=models.CASCADE,null='True', blank=True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE,null='True', blank=True)
   image_likes = models.ManyToManyField('Profile', default=False, blank=True, related_name='likes')
   date = models.DateTimeField(auto_now_add=True, null= True)
+
+  profile = models.ForeignKey('Profile')
+   
 
   def __str__(self):
         return self.image_caption

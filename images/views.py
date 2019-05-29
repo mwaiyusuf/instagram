@@ -14,10 +14,9 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/accounts/login/')
 def index(request):
     all_images = Image.objects.all()
-    all_users = Profile.objects.all()
     next = request.GET.get('next')
     if next: return redirect(next)
-    return render(request, 'display/home.html',  {"all_users":all_users})
+    return render(request, 'display/home.html',  {"all_images":all_images})
 
 @login_required(login_url='/accounts/login/')
 def explore(request):
@@ -71,4 +70,4 @@ def new_post(request):
             return redirect('new_post')
     else:
         form_post =PostForm(instance=request.user)
-    return render(request, 'display/new_post.html', {"form_post": form_post})
+    return render(request, 'display/new_post.html')
