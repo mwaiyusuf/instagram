@@ -65,9 +65,9 @@ def new_post(request):
         form_post = PostForm(request.POST,request.FILES)
         if form_post.is_valid():
             post = form_post.save(commit=False)
-            post_user=current_user
+            post.user=current_user
             form_post.save()
             return redirect('new_post')
     else:
         form_post =PostForm(instance=request.user)
-    return render(request, 'display/new_post.html')
+    return render(request, 'display/new_post.html',{"form_post":form_post})
